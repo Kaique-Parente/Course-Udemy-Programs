@@ -1,53 +1,75 @@
 package model.entities;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
+import model.exceptions.DomainException;
 
 public class Reservation {
-    private Integer roomNumber;
-    private LocalDate checkin;
-    private LocalDate checkout;
-    
-    private static DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    
-    public Reservation() {
-    }
 
-    public Reservation(Integer roomNumber, LocalDate checkin, LocalDate checkout) {
-        this.roomNumber = roomNumber;
-        this.checkin = checkin;
-        this.checkout = checkout;
-    }
+	private Integer roomNumber;
+	private Date checkIn;
+	private Date checkOut;
+	
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	
 
-    public Integer getRoomNumber() {
-        return roomNumber;
-    }
+	public Reservation(Integer roomNumber, Date checkIn, Date checkOut) throws DomainException{
 
-    public void setRoomNumber(Integer roomNumber) {
-        this.roomNumber = roomNumber;
-    }
+		if (!checkOut.after(checkIn)) {
+			throw new DomainException("Check-out date must be after check-in date");
+		}
+		this.roomNumber = roomNumber;
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
+	}
 
-    public LocalDate getCheckin() {
-        return checkin;
-    }
+	public Integer getRoomNumber() {
+		return roomNumber;
+	}
 
-    public LocalDate getCheckout() {
-        return checkout;
-    }
+	public void setRoomNumber(Integer roomNumber) {
+		this.roomNumber = roomNumber;
+	}
 
-    public int duration (){
-        Duration t1 = Duration.between(checkin.atStartOfDay(), checkout.atStartOfDay());
-        return (int) t1.toDays(); 
-    }
-    
-    public void updateDates (LocalDate checkin, LocalDate checkout) {
-        this.checkin = checkin;
-        this.checkout = checkout;
-    }
-    
-    @Override
-    public String toString() {
-        return String.format("Room %d, check-in: %s, check-out: %s, %d nights\n", roomNumber, checkin.format(fm1), checkout.format(fm1), duration());
-    }
+	public Date getCheckIn() {
+		return checkIn;
+	}
+
+	public Date getCheckOut() {
+		return checkOut;
+	}
+
+	public long duration() {
+		long diff = checkOut.getTime() - checkIn.getTime();
+		return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+	}
+	
+
+	public void updateDates(Date checkIn, Date checkOut) throws DomainException {
+
+		Date now = new Date();
+		if (checkIn.before(now) || checkOut.before(now)) {
+			throw new DomainException("Reservation dates for update must be future dates");
+		}
+		if (!checkOut.after(checkIn)) {
+			throw new DomainException("Check-out date must be after check-in date");
+		}
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
+	}
+	
+	@Override
+	public String toString() {
+		return "Room "
+			+ roomNumber
+			+ ", check-in: "
+			+ sdf.format(checkIn)
+			+ ", check-out: "
+			+ sdf.format(checkOut)
+			+ ", "
+			+ duration()
+			+ " nights";
+	}
 }
