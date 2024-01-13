@@ -1,25 +1,39 @@
 package application;
 
-import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Program {
 
     public static void main(String[] args) {
-        
-        File file = new File("C:\\Archives\\in.txt");
-        Scanner sc = null;
+
+        String path = "C:\\Archives\\in.txt";
+        FileReader fr = null;
+        BufferedReader br = null;
+
         try {
-            sc = new Scanner(file);
-            while (sc.hasNextLine()) {  // Enquanto existir linha no arquivo
-                System.out.println(sc.nextLine());
+            fr = new FileReader(path);
+            br = new BufferedReader(fr); // instanciado a partir do fr, + flexível
+
+            String line = br.readLine(); // Se o arquivo já estiver no final, vai me retornar null.
+                                     
+            while (line != null) {
+                System.out.println(line);
+                line = br.readLine();
             }
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
-        } finally { // independente do try ou do catch o meu scanner vai fechar]
-            if(sc != null) {
-                sc.close();
+        } finally { // Fechar as duas streams
+            try {
+                if (fr != null) {
+                    fr.close();
+                }
+                if (br != null) {
+                    br.close();
+                }
+            } catch (IOException e) { // Abrindo e fechando manualmente
+                e.getStackTrace();
             }
         }
     }
