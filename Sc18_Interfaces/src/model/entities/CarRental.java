@@ -42,11 +42,11 @@ public class CarRental {
         this.vehicle = vehicle;
     }
 
-    public Invoice getVoice() {
+    public Invoice getInvoice() {
         return invoice;
     }
 
-    public void setVoice(Invoice invoice) {
+    public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
     }
 
