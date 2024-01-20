@@ -27,17 +27,17 @@ public class Program {
         LocalDateTime finish = LocalDateTime.parse(sc.nextLine(), fm1);
         CarRental cr = new CarRental(start, finish, new Vehicle(model));
       
-        System.out.print("Entre com o preço por hora: ");
+        System.out.print("Enter price per hour: ");
         Double pricePerHour = sc.nextDouble();
-        System.out.print("Entre com o preço por dia: ");
+        System.out.print("Enter price per day: ");
         Double pricePerDay = sc.nextDouble();
         
         RentalService rentalService = new RentalService(pricePerHour, pricePerDay, new BrazilTaxService());
         rentalService.processInvoice(cr);
 
-        System.out.println("FATURA:");
-        System.out.print("Pagamento Básico: " + cr.getInvoice().getBasicPayment());
-        System.out.print("Imposto: " + cr.getInvoice().getTax());
-        System.out.print("Pagamento Total: " + cr.getInvoice().getTotalPayment());
+        System.out.println("INVOICE:");
+        System.out.printf("Basic payment: %.2f\n", cr.getInvoice().getBasicPayment());
+        System.out.printf("Tax: %.2f\n", cr.getInvoice().getTax());
+        System.out.printf("Total payment: %.2f\n", cr.getInvoice().getTotalPayment());
     }
 }
