@@ -39,6 +39,8 @@ public class Contract {
     public void setTotalValue(Double totalValue) {
         this.totalValue = totalValue;
     }
-    
-    
+
+    public List<Installment> getInstallments() {
+        return list;
+    }
 }
