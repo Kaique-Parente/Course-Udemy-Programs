@@ -33,6 +33,6 @@ public class Program {
         System.out.println("Installments:");
         for(Installment x : cr.getInstallments()) {
             System.out.println(x);
-        }
+        } 
     }
 }
