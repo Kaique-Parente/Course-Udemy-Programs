@@ -55,3 +55,11 @@ replay_pid*
 /Sc19_iBoundedWildcards/build/
 /Sc19_iBoundedWildcards2/nbproject/private/
 /Sc19_iBoundedWildcards2/build/
+/Sc19_gWildcard/nbproject/private/
+/Sc19_aGenerics/nbproject/private/
+/Sc19_aGenericsMethods/nbproject/private/
+/Sc19_bWildcard/nbproject/private/
+/Sc19_cBoundedWildcards/nbproject/private/
+/Sc19_cBoundedWildcards2/nbproject/private/
+/Sc19_dHashCodeAndEquals/nbproject/private/
+/Sc19_dHashCodeAndEquals/build/
