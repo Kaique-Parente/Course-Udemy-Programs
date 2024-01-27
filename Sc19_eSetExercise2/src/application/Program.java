@@ -12,23 +12,23 @@ public class Program {
         Set<Student> set = new HashSet<>();
         
         System.out.print("How many students for course A? ");
-        int a = sc.nextInt();
+        int n = sc.nextInt();
         
-        for(int i = 1; i <= a; i++) {
+        for(int i = 1; i <= n; i++) {
             set.add(new Student(sc.nextInt()));
         }
         
         System.out.print("How many students for course B? ");
-        int b = sc.nextInt();
+        n = sc.nextInt();
         
-        for(int i = 1; i <= b; i++) {
+        for(int i = 1; i <= n; i++) {
             set.add(new Student(sc.nextInt()));
         }
         
         System.out.print("How many students for course C? ");
-        int c = sc.nextInt();
+        n = sc.nextInt();
         
-        for(int i = 1; i <= c; i++) {
+        for(int i = 1; i <= n; i++) {
             set.add(new Student(sc.nextInt()));
         }
         
