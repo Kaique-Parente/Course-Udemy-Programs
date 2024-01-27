@@ -1,31 +1,24 @@
 package application;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
+import model.entities.Product;
 
 public class Program {
     public static void main(String[] args) {
         
-        Map<String, String> cookies = new LinkedHashMap<>();
-        
-        cookies.put("username", "Maria");
-        cookies.put("email", "maria@gmail.com");
-        cookies.put("phone", "9911111132232333");
-        
-        cookies.remove("email");
-        cookies.put("phone", "98321321323");
-
-        System.out.println("ALL Cookies:");
-        for (String key : cookies.keySet()) {
-            System.out.println(key + ": " + cookies.get(key));
-        }
-        
-        cookies.put("phone", "9911111132232333");
-        
-        System.out.println("Contains new phone key: " + cookies.containsKey("phone"));
-        System.out.println("");
-        
-        System.out.println("New Phone: " + cookies.get("phone"));
-        System.out.println("Size: " + cookies.size());     
+       Map<Product, Double> stock = new HashMap<>();
+       
+       Product p1 = new Product("Tv", 900.00);
+       Product p2 = new Product("Notebook", 2300.00);
+       Product p3 = new Product("Tablet", 1500.00);
+       
+       stock.put(p1, 10000.00);
+       stock.put(p2, 2000.00);
+       stock.put(p3, 15000.00);
+       
+       Product ps = new Product("Tv", 900.00);
+       
+       System.out.println("Contains 'ps' key: " + stock.containsKey(ps));
     }
 }
