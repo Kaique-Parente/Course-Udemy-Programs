@@ -39,8 +39,6 @@ public class Program {
             for(String key : candidate.keySet()) {
                 System.out.println(key + ": " + candidate.get(key));
             }
-            
-            Collections.sort();
         }
         catch(IOException e) {
             System.out.println("Error: " + e.getMessage());
