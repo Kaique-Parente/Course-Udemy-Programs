@@ -20,7 +20,7 @@ public class Program {
         
         double factor = 1.1;
         
-        list.forEach(new PriceUpdate());
+        list.forEach(Product::staticUpdatePrice);
         list.forEach(System.out::println);
     }
 }
