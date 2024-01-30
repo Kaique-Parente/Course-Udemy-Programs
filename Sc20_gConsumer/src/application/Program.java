@@ -4,7 +4,6 @@ import entities.Product;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.function.Consumer;
 
 public class Program {
 
@@ -20,9 +19,7 @@ public class Program {
         
         double factor = 1.1;
         
-        Consumer<Product> cons = p -> p.setPrice(p.getPrice() * 1.1);
-        
-        list.forEach(cons);
+        list.forEach(p -> p.setPrice(p.getPrice() * factor));
         list.forEach(System.out::println);
     }
 }
