@@ -4,7 +4,6 @@ import entities.Product;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import util.PriceUpdate;
 
 public class Program {
 
@@ -20,7 +19,7 @@ public class Program {
         
         double factor = 1.1;
         
-        list.forEach(Product::staticUpdatePrice);
+        list.forEach(Product::nonStaticUpdatePrice);
         list.forEach(System.out::println);
     }
 }
