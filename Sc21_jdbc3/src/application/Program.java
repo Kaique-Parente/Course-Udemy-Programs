@@ -20,8 +20,7 @@ public class Program {
         
         try{
             conn = DB.getConnection();
-            /*
-            
+
             st = conn.prepareStatement(
                     "INSERT INTO seller"
                     + "(Name, Email, BirthDate, BaseSalary, DepartmentId)"
@@ -36,8 +35,8 @@ public class Program {
             st.setInt(5, 4);
             
             int rowsAffected = st.executeUpdate();
-            */
-            
+           
+            /*
             st = conn.prepareStatement(
                     "INSERT INTO department"
                     + "(Name)"
@@ -45,8 +44,7 @@ public class Program {
                     + "('D1'), ('D2')",
                     Statement.RETURN_GENERATED_KEYS
             );
-            
-            int rowsAffected = st.executeUpdate();
+            */
             
             if(rowsAffected > 0) {
                 ResultSet rs = st.getGeneratedKeys();
@@ -61,6 +59,9 @@ public class Program {
           
         }
         catch(SQLException e) {
+            e.printStackTrace();
+        } 
+        catch (ParseException e) {
             e.printStackTrace();
         }
        
