@@ -63,8 +63,6 @@ public class Program {
         } 
         catch (ParseException e) {
             e.printStackTrace();
-        }
-       
-        
+        } 
     }
 }
