@@ -1,32 +1,30 @@
 package application;
 
-import java.util.Arrays;
-import java.util.List;
+
 
 public class Program {
-    public static void main(String[] args) {
-       
-        List <Integer> arr = Arrays.asList(1, 2, 3, 4, 5);
+    public static String timeConversion(String s) {
         
-        int total=0, aux=0, min=0, max=arr.get(0);
+        String[] fields = s.split(":");
         
-        for(int item : arr) {
-            total += item;
+        String horas = fields[0];
+        String minutos = fields[1];
+        String aux = fields[2];
+        
+        String segundos = aux.substring(0, aux.length() - 2);
+        
+        if(s.contains("AM") && horas.contains("12")) {
+            horas = "00";
+        }
+        if(s.contains("PM") && horas.contains("12")) {
+            horas = "12";
+        } else if (s.contains("PM")) {
+            int valor = Integer.parseInt(horas);
+            valor += 12;
+            horas = valor + "";
         }
         
-        min = total;
-        
-        for(int i=0; i < 5; i++){
-            aux=total;
-            aux = aux - arr.get(i);
-            if(aux > max) {
-                max = aux;
-            }
-            if(aux < min) {
-                min = aux;
-            }
-        }
-        
-        System.out.println(min + " " + max);
+        return horas+":"+minutos+":"+segundos;
+
     }
 }
