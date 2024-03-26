@@ -1,30 +1,21 @@
 package application;
 
+import java.util.List;
+
 
 
 public class Program {
-    public static String timeConversion(String s) {
+    public static int lonelyinteger(List<Integer> a) {
         
-        String[] fields = s.split(":");
+        int resultado = 0;
         
-        String horas = fields[0];
-        String minutos = fields[1];
-        String aux = fields[2];
-        
-        String segundos = aux.substring(0, aux.length() - 2);
-        
-        if(s.contains("AM") && horas.contains("12")) {
-            horas = "00";
-        }
-        if(s.contains("PM") && horas.contains("12")) {
-            horas = "12";
-        } else if (s.contains("PM")) {
-            int valor = Integer.parseInt(horas);
-            valor += 12;
-            horas = valor + "";
+        for (int item : a){
+            if(a.stream().filter(valor -> valor == item).count() == 1L) {
+                resultado = item;
+                break;
+            }
         }
         
-        return horas+":"+minutos+":"+segundos;
-
+        return resultado;
     }
 }
